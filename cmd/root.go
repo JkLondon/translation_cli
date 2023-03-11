@@ -26,7 +26,7 @@ var rootCmd = &cobra.Command{
 		req, _ := http.NewRequest("POST", url, payload)
 
 		req.Header.Add("content-type", "application/x-www-form-urlencoded")
-		req.Header.Add("X-RapidAPI-Key", os.Getenv("RAPIDAPIKEY"))
+		req.Header.Add("X-RapidAPI-Key", args[1])
 		req.Header.Add("X-RapidAPI-Host", "translo.p.rapidapi.com")
 
 		res, _ := http.DefaultClient.Do(req)
