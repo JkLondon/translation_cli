@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"net/http"
@@ -33,8 +34,9 @@ var rootCmd = &cobra.Command{
 		defer res.Body.Close()
 		body, _ := ioutil.ReadAll(res.Body)
 
-		fmt.Println(res)
-		fmt.Println(string(body))
+		resp := TranslateResponse{}
+		json.Unmarshal(body, &resp)
+		fmt.Println(resp.TranslatedText)
 	},
 }
 
